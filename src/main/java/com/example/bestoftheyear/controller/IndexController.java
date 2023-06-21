@@ -38,16 +38,13 @@ public class IndexController {
 
     @GetMapping("/movies/{id}")
     public String getMovie(Model model, @PathVariable("id") int id) {
-        List<Movie> movies = getBestMovies();
         Movie selectedMovie = null;
 
-        for (Movie movie : movies) {
+        for (Movie movie : getBestMovies()) {
             if (movie.getId() == id) {
                 selectedMovie = movie;
-                break;
             }
         }
-
         model.addAttribute("movie", selectedMovie);
 
         return "movie-detail";
@@ -68,16 +65,13 @@ public class IndexController {
         songs.add(new Song(3, "Hammer Smashed Face", "Cannibal Corpse"));
         return songs;
     }
-    
+
     @GetMapping("/songs/{id}")
     public String getSong(Model model, @PathVariable("id") int id) {
-        List<Song> songs = getBestSongs();
         Song selectedSong = null;
-
-        for (Song song : songs) {
+        for (Song song : getBestSongs()) {
             if (song.getId() == id) {
                 selectedSong = song;
-                break;
             }
         }
 
