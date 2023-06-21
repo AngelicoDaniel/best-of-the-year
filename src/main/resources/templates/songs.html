@@ -4,16 +4,18 @@
     <th:block th:replace="fragments :: head"></th:block>
     <title>Songs</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <nav>
     <th:block th:replace="fragments :: navbar"></th:block>
 </nav>
-<h1>Best Songs</h1>
-<ul>
-    <li th:each="song : ${songs}">
-        <a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.title}"></a>
-    </li>
-</ul>
-<a href="/">Back to Home</a>
+<div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+    <h1>Best Songs</h1>
+    <ul class="list-group">
+        <li class="list-group-item mb-3" th:each="song : ${songs}">
+            <a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.title}"></a>
+        </li>
+    </ul>
+    <a href="/">Back to Home</a>
+</div>
 </body>
 </html>
