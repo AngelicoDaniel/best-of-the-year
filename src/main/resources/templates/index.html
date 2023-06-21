@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:replace="fragments :: head"></th:block>
     <title>Home</title>
 </head>
-<body>
-<nav>nav nav nav nav</nav>
-<h1 th:text="'Best of by ' + ${name}"></h1>
-<div>
-    <img alt="logo" th:src="@{/logo.jpg}"/>
+<body class="vh-100  flex-column d-flex justify-content-center align-items-around">
+<nav>
+    <th:block th:replace="fragments :: navbar"></th:block>
+</nav>
 
+<div class="container h-100 d-flex flex-column justify-content-center">
+    <div class="row justify-content-around">
+        <div class="col text-center m-4">
+            <h1 th:text="'Best of by ' + ${name}"></h1>
+            <img alt="logo" id="logo" th:src="@{/logo.jpg}"/>
+            <div class="mt-4">Lorem ipsum</div>
+        </div>
+    </div>
 </div>
-<a href="/movies">Best Movies</a>
-<a href="/songs">Best Songs</a>
+
+<div class="d-flex justify-content-center">
+    <a class="me-2" href="/movies">Best Movies</a>
+    <a href="/songs">Best Songs</a>
+</div>
 </body>
 </html>
