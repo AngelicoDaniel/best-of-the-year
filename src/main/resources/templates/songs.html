@@ -2,14 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Songs</title>
 </head>
 <body>
+<nav>nav nav nav nav</nav>
 <h1>Best Songs</h1>
 <ul>
     <li th:each="song : ${songs}">
-        <span th:text="${song.title}"></span> by <span th:text="${song.author}"></span>
+        <a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.title}"></a>
     </li>
 </ul>
+<a href="/">Back to Home</a>
 </body>
 </html>

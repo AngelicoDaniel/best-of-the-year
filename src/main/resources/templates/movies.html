@@ -2,14 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Movies</title>
 </head>
 <body>
-<h1>Best Songs</h1>
+<nav>nav nav nav</nav>
+<h1>Best Movies</h1>
 <ul>
     <li th:each="movie : ${movies}">
-        <span th:text="${movie.title}"></span>
+        <a th:href="@{/movies/{id}(id=${movie.id})}" th:text="${movie.title}"></a>
     </li>
 </ul>
+<a href="/">Back to Home</a>
 </body>
 </html>

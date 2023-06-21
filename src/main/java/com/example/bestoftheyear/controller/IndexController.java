@@ -5,6 +5,7 @@ import com.example.bestoftheyear.model.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -35,6 +36,23 @@ public class IndexController {
         return movies;
     }
 
+    @GetMapping("/movies/{id}")
+    public String getMovie(Model model, @PathVariable("id") int id) {
+        List<Movie> movies = getBestMovies();
+        Movie selectedMovie = null;
+
+        for (Movie movie : movies) {
+            if (movie.getId() == id) {
+                selectedMovie = movie;
+                break;
+            }
+        }
+
+        model.addAttribute("movie", selectedMovie);
+
+        return "movie-detail";
+    }
+
 
     @GetMapping("/songs")
     public String getBestSongs(Model model) {
@@ -50,5 +68,23 @@ public class IndexController {
         songs.add(new Song(3, "Hammer Smashed Face", "Cannibal Corpse"));
         return songs;
     }
+    
+    @GetMapping("/songs/{id}")
+    public String getSong(Model model, @PathVariable("id") int id) {
+        List<Song> songs = getBestSongs();
+        Song selectedSong = null;
+
+        for (Song song : songs) {
+            if (song.getId() == id) {
+                selectedSong = song;
+                break;
+            }
+        }
+
+        model.addAttribute("song", selectedSong);
+
+        return "song-detail";
+    }
+
 
 }
